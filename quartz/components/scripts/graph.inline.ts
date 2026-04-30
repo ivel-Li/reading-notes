@@ -87,6 +87,7 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     showTags,
     focusOnHover,
     enableRadial,
+    themeColors,
   } = JSON.parse(graph.dataset["cfg"]!) as D3Config
 
   const data: Map<SimpleSlug, ContentDetails> = new Map(
@@ -193,16 +194,33 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     {} as Record<(typeof cssVars)[number], string>,
   )
 
-  // calculate color
+  // calculate color: by tag theme if available, otherwise by visited state
   const color = (d: NodeData) => {
     const isCurrent = d.id === slug
     if (isCurrent) {
       return computedStyleMap["--secondary"]
-    } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
-      return computedStyleMap["--tertiary"]
-    } else {
-      return computedStyleMap["--gray"]
     }
+
+    // tag nodes always use tertiary color with a stroke already
+    if (d.id.startsWith("tags/")) {
+      return computedStyleMap["--tertiary"]
+    }
+
+    // try to match by theme tag (from config, falls back to empty if not set)
+    const colors = themeColors ?? {}
+    if (d.tags && d.tags.length > 0) {
+      for (const tag of d.tags) {
+        if (colors[tag]) {
+          return colors[tag]
+        }
+      }
+    }
+
+    // fallback: visited or gray
+    if (visited.has(d.id)) {
+      return computedStyleMap["--tertiary"]
+    }
+    return computedStyleMap["--gray"]
   }
 
   function nodeRadius(d: NodeData) {
@@ -374,11 +392,12 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   for (const n of graphData.nodes) {
     const nodeId = n.id
 
+    // show labels by default so you can see node names without hovering
     const label = new Text({
       interactive: false,
       eventMode: "none",
       text: n.text,
-      alpha: 0,
+      alpha: 0.7,
       anchor: { x: 0.5, y: 1.2 },
       style: {
         fontSize: fontSize * 15,

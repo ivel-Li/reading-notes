@@ -19,6 +19,7 @@ export interface D3Config {
   showTags: boolean
   focusOnHover?: boolean
   enableRadial?: boolean
+  themeColors?: Record<string, string>
 }
 
 interface GraphOptions {
@@ -41,6 +42,24 @@ const defaultOptions: GraphOptions = {
     removeTags: [],
     focusOnHover: false,
     enableRadial: false,
+    themeColors: {
+      "制度": "#4A7FB5",
+      "权力": "#4A7FB5",
+      "服饰": "#E8833A",
+      "衣食住行": "#E8833A",
+      "地理": "#6B8E23",
+      "宗教": "#6B8E23",
+      "文化": "#6B8E23",
+      "人物": "#8B5CF6",
+      "崛起": "#8B5CF6",
+      "小人物": "#2D9B8E",
+      "沉浮": "#2D9B8E",
+      "战争": "#C23B3B",
+      "谋略": "#C23B3B",
+      "文学": "#D97706",
+      "史诗": "#DB2777",
+      "奇幻": "#DB2777",
+    },
   },
   globalGraph: {
     drag: true,
@@ -56,6 +75,24 @@ const defaultOptions: GraphOptions = {
     removeTags: [],
     focusOnHover: true,
     enableRadial: true,
+    themeColors: {
+      "制度": "#4A7FB5",
+      "权力": "#4A7FB5",
+      "服饰": "#E8833A",
+      "衣食住行": "#E8833A",
+      "地理": "#6B8E23",
+      "宗教": "#6B8E23",
+      "文化": "#6B8E23",
+      "人物": "#8B5CF6",
+      "崛起": "#8B5CF6",
+      "小人物": "#2D9B8E",
+      "沉浮": "#2D9B8E",
+      "战争": "#C23B3B",
+      "谋略": "#C23B3B",
+      "文学": "#D97706",
+      "史诗": "#DB2777",
+      "奇幻": "#DB2777",
+    },
   },
 }
 
