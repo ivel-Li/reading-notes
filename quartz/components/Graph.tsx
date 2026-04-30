@@ -43,6 +43,7 @@ const defaultOptions: GraphOptions = {
     focusOnHover: false,
     enableRadial: false,
     themeColors: {
+      "MOC": "#6B7280",
       "制度": "#4A7FB5",
       "权力": "#4A7FB5",
       "服饰": "#E8833A",
@@ -76,6 +77,7 @@ const defaultOptions: GraphOptions = {
     focusOnHover: true,
     enableRadial: true,
     themeColors: {
+      "MOC": "#6B7280",
       "制度": "#4A7FB5",
       "权力": "#4A7FB5",
       "服饰": "#E8833A",

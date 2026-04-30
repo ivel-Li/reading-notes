@@ -2,8 +2,7 @@
 title: 刘邦起于亭长
 tags:
   - 人物
-  - 成长
-  - 逆袭
+  - 崛起
 created: 2025-01-01
 modified: 2025-01-01
 source: 《史记·高祖本纪》
