@@ -34,8 +34,6 @@ npm run build
 # → 产物输出到 public/
 ```
 
-> **Windows 用户注意：** 用 CMD（命令提示符），**不要用 PowerShell**。CMD 中先 `cd d:\interest\writting` 进入项目目录再运行上述命令。
->
 > 💡 **新手入门？** 完全不了解 Node.js/npm/GitHub？→ [📖 面向新手的完整入门指南](docs/新手入门指南.md)
 
 ---
