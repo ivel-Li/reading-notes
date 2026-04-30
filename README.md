@@ -18,8 +18,22 @@
 
 ### 环境要求
 
-- Node.js 18+
-- npm 9+
+- Node.js 22+
+- npm 10+
+
+> 💡 本项目基于 Quartz 4，需要 Node.js 22 或更高版本。可用 `node -v` 查看当前版本。
+
+### ⚠️ Windows 用户注意事项
+
+**请使用 CMD（命令提示符），不要用 PowerShell。** 如果直接在 PowerShell 中运行 `npx` 可能会报以下错误：
+
+```
+npx : 无法加载文件 C:\Program Files\nodejs\npx.ps1，因为在此系统上禁止运行脚本。
+```
+
+**打开 CMD 的方法：**
+- 在 VSCode 中按 `Ctrl + Shift + P`，输入 "Terminal: Select Default Profile"，选 **Command Prompt**
+- 或者直接在文件资源管理器的地址栏输入 `cmd` 回车
 
 ### 1. 安装依赖
 
@@ -29,6 +43,14 @@ npm install
 
 ### 2. 本地预览（开发模式）
 
+**请在 CMD（命令提示符）中运行：**
+
+```bash
+npm run dev
+```
+
+或者
+
 ```bash
 npx quartz build --serve
 ```
@@ -36,6 +58,12 @@ npx quartz build --serve
 访问 http://localhost:8080 查看效果。修改 `content/` 下的笔记后，浏览器会自动刷新。
 
 ### 3. 构建静态站点
+
+```bash
+npm run build
+```
+
+或
 
 ```bash
 npx quartz build
@@ -143,7 +171,9 @@ reading-notes/
 | 命令 | 用途 |
 |------|------|
 | `npm install` | 安装依赖（首次运行） |
-| `npx quartz build --serve` | 本地预览 + 热更新 |
+| `npm run dev` | 本地预览 + 热更新（推荐，等价于 `npx quartz build --serve`）|
+| `npm run build` | 构建静态站点（等价于 `npx quartz build`）|
+| `npx quartz build --serve` | 本地预览 + 热更新（如 npm run dev 无效可试此命令） |
 | `npx quartz build` | 构建静态站点 |
 | `npx quartz update` | 升级 Quartz 至最新版 |
 
