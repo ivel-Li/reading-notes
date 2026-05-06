@@ -1,3 +1,5 @@
+# WARNING: Node.js 20 actions are deprecated.
+# Set FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true to use Node.js 24.
 name: Deploy to GitHub Pages
 
 on:
@@ -5,6 +7,9 @@ on:
     branches:
       - master
   workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 permissions:
   contents: read
@@ -32,7 +37,7 @@ jobs:
         run: npx quartz build
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
